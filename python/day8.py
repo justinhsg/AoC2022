@@ -85,7 +85,8 @@ class Day8Solution(ISolution):
         for i in range(len(grid)):
             for j in range(len(grid[i])):
                 value = l_ct[i][j] * r_ct[i][j] * t_ct[i][j] * b_ct[i][j]
-                answer = max(value, answer)
+                if value > answer:
+                    answer = value
         return answer
 
 
