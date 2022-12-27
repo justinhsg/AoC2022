@@ -8,6 +8,11 @@ from typing import List, Tuple, Union, TypeVar
 T = TypeVar("T")
 Pint = Tuple[int, int]
 Tint = Tuple[int, int, int]
+int4 = Tuple[int, int, int, int]
+
+
+def ceil_div(a, b):
+    return -(a // -b)
 
 
 def prod(iterable):
@@ -22,9 +27,8 @@ def pretty_print(xy: List[List]) -> None:
 def int_mean(n: List[int]) -> Tuple[int, int]:
     if sum(n) % len(n) == 0:
         return (sum(n) // len(n), sum(n) // len(n))
-    else:
-        mean = sum(n) / len(n)
-        return (int(mean), int(mean) + 1)
+    mean = sum(n) / len(n)
+    return (int(mean), int(mean) + 1)
 
 
 def int_median(n: List[int]) -> Tuple[int, int]:
@@ -68,6 +72,10 @@ def bitmask_is_set(bitmask: int, pos: int) -> bool:
 
 def bitmask_set_bit(bitmask: int, pos: int) -> int:
     return bitmask | 1 << pos
+
+
+def bitmask_unset_bit(bitmask: int, pos: int) -> int:
+    return bitmask & ~(1 << pos)
 
 
 class ISolution(ABC):
